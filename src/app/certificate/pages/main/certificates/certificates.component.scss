@@ -1,0 +1,266 @@
+$color-main: rgb(194, 194, 194);
+
+%position-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  @extend %position-center;
+  display: block;
+  min-height: calc(100vh - 120px);
+  //height: 85%;
+  flex: 1 0 auto;
+  border: none;
+  background-color: #f2f2f2;
+  overflow: hidden;
+}
+
+.img-icon {
+  text-align: center;
+}
+
+.container {
+  display: inline-flex;
+  justify-content: space-around;
+  // justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.cell {
+  display: inline-block;
+  width: 20%;
+  min-width: fit-content;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+
+.cell:hover {
+  box-shadow: 5px 0 10px rgb(88, 90, 88);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 5px auto;
+  padding: 10px;
+}
+
+.img-card {
+  font-size: 200px;
+  width: 100%;
+  background: $color-main;
+  text-align: center;
+
+  a:hover {
+    color: black;
+  }
+}
+
+%format-button {
+  @extend %position-center;
+  display: inline-flex;
+  margin: 25px 0;
+  width: 100%;
+}
+
+%button-base {
+  width: 155px;
+  display: inline-block;
+  padding: 6px 35px;
+  margin: 10px;
+  text-decoration: none;
+  font-size: 12pt;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid;
+}
+
+%btn-grey {
+  @extend %button-base;
+  border-color: #e9e9e9;
+  color: grey;
+  background-color: white;
+}
+
+%btn-green {
+  @extend %button-base;
+  border-color: #67c78f;
+  color: white;
+  background-color: #6fcf97;
+}
+
+%btn-grey:hover {
+  background: #e6e6ff;
+}
+
+%btn-grey:active {
+  background: #a1a1aa;
+  color: rgb(54, 52, 52);
+}
+
+.item-info {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: white;
+
+  .top-row,
+  .midle-row,
+  .botton-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    font-size: 16px;
+  }
+
+  .top-row {
+    font-size: 20px;
+  }
+
+  .midle-row {
+    border-bottom: 1px solid $color-main;
+    font-size: 12px;
+  }
+
+  .item-tag-name {
+    width: 120px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .item-extra-info {
+    width: 80px;
+    text-align: end;
+  }
+
+  .btn-add-item {
+    @extend %btn-grey;
+    vertical-align: middle;
+    font-size: 14px;
+    margin: 0;
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+  }
+}
+
+/*  Table  */
+
+.table-order,
+.table-tag,
+.table-user {
+  width: 60%;
+  margin: 40px auto 5px;
+  background: rgb(233, 233, 233);
+
+  .table-title-row,
+  .table-row {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid grey;
+  }
+
+  .table-title-row {
+    background: $color-main;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .table-row {
+    font-size: 16px;
+  }
+
+  p {
+    text-align: center;
+    padding: 15px;
+  }
+
+  .table-row:hover {
+    box-shadow: 5px 0 10px rgb(88, 90, 88);
+    background: rgb(211, 211, 211);
+  }
+
+  .creation-date {
+    width: 50%;
+  }
+
+  .total-price {
+    width: 50%;
+  }
+
+  .name,
+  .type,
+  .price {
+    width: 33.33%;
+  }
+}
+
+.table-user p {
+  width: 25%;
+}
+
+.table-tag p {
+  width: 33.3333%;
+}
+
+.table-order p {
+  width: 50%;
+}
+
+.btn-delete {
+  @extend %btn-grey;
+  background: rgb(252, 67, 67);
+  color: black;
+
+
+}
+
+.btn-delete:hover {
+  background: rgb(233, 39, 39);
+}
+
+.btn-delete:active {
+  background: rgb(199, 23, 23);
+  color: white;
+}
+
+/*Button ScrollUp*/
+
+.scrollUp {
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  right: 2%;
+  z-index: 99;
+  font-size: 50px;
+  border: none;
+  outline: none;
+  background-color: #67c78f;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.scrollUp:hover {
+  background-color: #3a925f;
+}
+
+.scrollUp:active {
+  background-color: #2b7a4c;
+}

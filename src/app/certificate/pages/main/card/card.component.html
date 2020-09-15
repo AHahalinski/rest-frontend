@@ -1,0 +1,28 @@
+<div class="cell">
+  <div class="card">
+    <a class="img-card" href="details.certificate.html">
+      <span class="iconify" data-icon="mdi:certificate-outline" data-inline="false"></span>
+    </a>
+    <div class="item-info">
+      <div class="top-row">
+        <div class="item-name"> {{certificate.name}} </div>
+        <div class="wish-list">
+          <a href="#">
+            <i class="iconify" data-icon="mdi:cards-heart" data-inline="false"></i>
+          </a>
+        </div>
+      </div>
+      <div class="midle-row">
+        <div class="item-tag-name"> {{tagsName.join(', ')}} </div>
+        <div class="item-extra-info"> {{certificate.durationDays.toLowerCase().replace('_', ' ')}} </div>
+
+      </div>
+      <div class="botton-row">
+        <div class="item-price">$ {{certificate.price}}</div>
+        <div class="btn-add-cart">
+          <button class="btn-add-item">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

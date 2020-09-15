@@ -1,0 +1,11 @@
+<div class="content">
+  <app-nav-top-line></app-nav-top-line>
+  <div class="container-wrapper">
+    <div class="container">
+      <app-card *ngFor="let card of cards" [certificate]="card"></app-card>
+      <div class="scrollUp">
+        <span class="iconify" data-icon="mdi:chevron-up-box" data-inline="false"></span>
+      </div>
+    </div>
+  </div>
+</div>

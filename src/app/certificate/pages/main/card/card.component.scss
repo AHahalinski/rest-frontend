@@ -1,0 +1,117 @@
+$color-main: rgb(194, 194, 194);
+
+.cell {
+  display: inline-block;
+  width: 20%;
+  min-width: fit-content;
+  box-sizing: border-box;
+  opacity: 1;
+  transition: opacity 1s 1s;
+}
+
+.cell:hover {
+  box-shadow: 5px 0 10px rgb(88, 90, 88);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 5px auto;
+  padding: 10px;
+}
+
+
+.img-card {
+  font-size: 200px;
+  width: 100%;
+  background: $color-main;
+  text-align: center;
+
+  a:hover {
+    color: black;
+  }
+}
+
+.item-info {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: white;
+
+  .top-row,
+  .midle-row,
+  .botton-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    font-size: 16px;
+  }
+
+  .top-row {
+    font-size: 20px;
+  }
+
+  .midle-row {
+    border-bottom: 1px solid $color-main;
+    font-size: 12px;
+  }
+
+  .item-tag-name {
+    width: 120px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .item-extra-info {
+    width: 80px;
+    text-align: end;
+  }
+
+  %button-base {
+    width: 155px;
+    display: inline-block;
+    padding: 6px 35px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 12pt;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid;
+  }
+
+  %btn-grey {
+    @extend %button-base;
+    border-color: #e9e9e9;
+    color: grey;
+    background-color: white;
+  }
+
+  %btn-grey:hover {
+    background: #e6e6ff;
+  }
+
+  %btn-grey:active {
+    background: #a1a1aa;
+    color: rgb(54, 52, 52);
+  }
+
+  .btn-add-item {
+    @extend %btn-grey;
+    vertical-align: middle;
+    font-size: 14px;
+    margin: 0;
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+  }
+}
