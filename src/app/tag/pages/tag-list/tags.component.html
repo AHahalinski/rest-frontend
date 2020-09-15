@@ -1,0 +1,13 @@
+<div class="container-wrapper">
+  <div class="table-tag">
+    <div class="table-title-row">
+      <p class="name">Name</p>
+      <p class="type">Type</p>
+      <p class="price">Price, $</p>
+    </div>
+    <app-tag-card *ngFor="let tag of tags" [tag]="tag"></app-tag-card>
+  </div>
+  <div class="scrollUp">
+    <span class="iconify" data-icon="mdi:chevron-up-box" data-inline="false"></span>
+  </div>
+</div>

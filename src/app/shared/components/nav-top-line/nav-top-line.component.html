@@ -1,32 +1,34 @@
 <div class="nav-top-line">
-    <a href="main.certificate.html">
-        <div class="nav-item">
-            <div class="img-icon">
-                <span class="iconify" data-icon="mdi:certificate-outline" data-inline="false"></span>
-            </div>
-            <div class="img-title">Certificates</div>
-        </div>
-    </a>
-    <a href="main.tag.table.html">
-        <div class="nav-item">
-            <div class="img-icon">
-                <span class="iconify" data-icon="mdi:tag-text" data-inline="false"></span>
-            </div>
-            <div class="img-title">Tags</div>
-        </div>
-    </a> <a href="main.order.html">
-        <div class="nav-item">
-            <div class="img-icon">
-                <span class="iconify" data-icon="mdi:shopping" data-inline="false"></span>
-            </div>
-            <div class="img-title">Orders</div>
-        </div>
-    </a><a href="main.user.html">
-        <div class="nav-item">
-            <div class="img-icon">
-                <span class="iconify" data-icon="mdi:account-multiple" data-inline="false"></span>
-            </div>
-            <div class="img-title">Users</div>
-        </div>
-    </a>
+  <a [routerLink]="['/certificates']">
+    <div class="nav-item">
+      <div class="img-icon">
+        <span class="iconify" data-icon="mdi:certificate-outline" data-inline="false"></span>
+      </div>
+      <div class="img-title">Certificates</div>
+    </div>
+  </a>
+  <a [routerLink]="['/tags']">
+    <div class="nav-item">
+      <div class="img-icon">
+        <span class="iconify" data-icon="mdi:tag-text" data-inline="false"></span>
+      </div>
+      <div class="img-title">Tags</div>
+    </div>
+  </a>
+  <a [routerLink]="['/orders']">
+    <div class="nav-item">
+      <div class="img-icon">
+        <span class="iconify" data-icon="mdi:shopping" data-inline="false"></span>
+      </div>
+      <div class="img-title">Orders</div>
+    </div>
+  </a>
+  <a [routerLink]="['/users']">
+    <div class="nav-item">
+      <div class="img-icon">
+        <span class="iconify" data-icon="mdi:account-multiple" data-inline="false"></span>
+      </div>
+      <div class="img-title">Users</div>
+    </div>
+  </a>
 </div>

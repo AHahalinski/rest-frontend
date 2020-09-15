@@ -6,17 +6,6 @@ $color-main: rgb(194, 194, 194);
   justify-content: center;
 }
 
-.content {
-  @extend %position-center;
-  display: block;
-  min-height: calc(100vh - 120px);
-  //height: 85%;
-  flex: 1 0 auto;
-  border: none;
-  background-color: #f2f2f2;
-  overflow: hidden;
-}
-
 .details {
   display: flex;
   justify-content: space-evenly;

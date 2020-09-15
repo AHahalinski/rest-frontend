@@ -1,0 +1,14 @@
+<div class="wrapper-login">
+  <div class="window-login">
+    <div class="circle-logo">
+      <b>Logo</b>
+    </div>
+    <div class="login-form">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <input class="field-login" type="text" placeholder="Login" formControlName="login" />
+        <input class="field-password" type="password" placeholder="Password" formControlName="password"/>
+        <button class="button-login" type="submit" [disabled]="submitted">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -94,17 +94,6 @@ $width-default:330px;
   background: #2b7a4c;
 }
 
-
-.content {
-  @extend %position-center;
-  display: block;
-  min-height: calc(100vh - 120px);
-  flex: 1 0 auto;
-  border: none;
-  background-color: #f2f2f2;
-  overflow: hidden;
-}
-
 .window-creator-certificate {
   @extend %position-center;
   width: 100%;

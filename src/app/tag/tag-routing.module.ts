@@ -1,10 +1,11 @@
+import { TagsComponent } from './pages/tag-list/tags.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const tagRoutes: Routes = [
-  // { path: '', component: CertificatesComponent },
-  // { path: 'add', component: AddEditComponent },
-  // { path: ':id', component: DetailsComponent }
+  { path: 'tags', component: TagsComponent }
+  // // { path: 'add', component: AddEditComponent },
+  // // { path: ':id', component: DetailsComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,116 @@
+$color-main: rgb(194, 194, 194);
+
+%position-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+}
+
+.circle-logo {
+  @extend %position-center;
+  position: sticky;
+  height: 200px;
+  width: 200px;
+  background-color: #c4c4c4;
+  border-radius: 50%;
+
+  margin: 0;
+  font-size: 46px;
+  color: white;
+  margin: auto;
+  z-index: 1;
+
+  b {
+    padding-bottom: 15px;
+  }
+}
+
+.login-form {
+  @extend %position-center;
+  position: sticky;
+  height: 300px;
+  width: 400px;
+  background-color: #fcfcfc;
+  margin-top: -100px;
+
+  form {
+    width: 70%;
+    ;
+    margin-top: 90px;
+  }
+}
+
+%format-button {
+  @extend %position-center;
+  display: inline-flex;
+  margin: 25px 0;
+  width: 100%;
+}
+
+%button-base {
+  width: 155px;
+  display: inline-block;
+  padding: 6px 35px;
+  margin: 10px;
+  text-decoration: none;
+  font-size: 12pt;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid;
+}
+
+
+%btn-grey {
+  @extend %button-base;
+  border-color: #e9e9e9;
+  color: grey;
+  background-color: white;
+}
+
+%btn-green {
+  @extend %button-base;
+  border-color: #67c78f;
+  color: white;
+  background-color: #6fcf97;
+}
+
+%btn-grey:hover {
+  background: #e6e6ff;
+}
+
+%btn-grey:active {
+  background: #a1a1aa;
+  color: rgb(54, 52, 52);
+}
+
+%btn-green:hover {
+  background: #3a925f;
+}
+
+%btn-green:active {
+  background: #2b7a4c;
+}
+
+.button-login {
+  @extend %btn-green;
+  margin: 10px auto;
+  width: 100%;
+}
+
+.field-login,
+.field-password {
+  @extend %format-button;
+  border-width: thin;
+  box-sizing: border-box;
+  margin: 10px 0;
+}

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CertificateService {
 
-  private uri = `http://localhost:8080/rest/certificates?page=1&size=30&nameTag=&search&sortBy=ASC`;
+  private uri = `http://localhost:8080/rest/certificates?page=1&size=10&nameTag=&search&sortBy=ASC`;
 
   constructor(private http: HttpClient) { }
 
