@@ -1,0 +1,33 @@
+<div class="container-wrapper">
+  <div class="title-form">
+    <div class="title">User details</div>
+  </div>
+  <div class="details" *ngIf="user">
+    <div class="info-right-box">
+      <div class="user-box">
+        <div class="user-login">
+          <h2>{{user.login}}</h2>
+        </div>
+        <div class="user-name">
+          <h3>First name:</h3>
+          {{user.firstName}}
+        </div>
+        <div class="user-name">
+          <h3>Second name:</h3>
+          {{user.secondName}}
+        </div>
+        <div class="user-role">
+          <h3>Role:</h3>
+          {{user.stringRoles.join(', ').replace('ROLE_', '')}}
+        </div>
+      </div>
+      <div class="admin-box">
+        <div class="button-group">
+          <!-- <div>
+            <button class="btn-lock" type="submit">Lock</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

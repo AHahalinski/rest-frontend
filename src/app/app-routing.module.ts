@@ -1,25 +1,20 @@
+import { RegistrationComponent } from './user/pages/registration/registration.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TagModule } from './tag/tag.module';
-import { OrderModule } from './order/order.module';
-import { UserModule } from './user/user.module';
-import { CertificateModule } from './certificate/certificate.module';
 import { LoginComponent } from './user/pages/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'certificates', pathMatch: 'full' },
-  { path: 'certificates', loadChildren: () => CertificateModule },
-  { path: 'tags', loadChildren: () => TagModule },
-  { path: 'orders', loadChildren: () => OrderModule },
-  { path: 'users', loadChildren: () => UserModule },
-  { path: 'auth/login', component: LoginComponent }
+  { path: 'certificates', loadChildren: () => import('./certificate/certificate.module').then(m => m.CertificateModule) },
+  { path: 'tags', loadChildren: () => import('./tag/tag.module').then(m => m.TagModule)},
+  { path: 'orders', loadChildren: () => import('./order/order.module').then(m => m.OrderModule) },
+  { path: 'users', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
+  { path: 'auth/login', component: LoginComponent },
+  { path: 'auth/registration', component: RegistrationComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),
-    CertificateModule,
-    TagModule
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

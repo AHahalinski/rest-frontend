@@ -1,4 +1,4 @@
-<div class="cell">
+<div class="cell" @animationTriggerName *ngIf="certificate">
   <div class="card">
     <a class="img-card" [routerLink]="['./',certificate.id]">
       <span class="iconify" data-icon="mdi:certificate-outline" data-inline="false"></span>
@@ -7,20 +7,19 @@
       <div class="top-row">
         <div class="item-name"> {{certificate.name}} </div>
         <div class="wish-list">
-          <a href="#">
-            <i class="iconify" data-icon="mdi:cards-heart" data-inline="false"></i>
-          </a>
+          <button mat-icon-button aria-label="Example icon button with a heart icon">
+            <mat-icon>favorite</mat-icon>
+          </button>
         </div>
       </div>
       <div class="midle-row">
-        <div class="item-tag-name"> {{tagsName.join(', ')}} </div>
+        <div class="item-tag-name"> {{tagsName | join}} </div>
         <div class="item-extra-info"> {{certificate.durationDays.toLowerCase().replace('_', ' ')}} </div>
-
       </div>
       <div class="botton-row">
-        <div class="item-price">$ {{certificate.price}}</div>
-        <div class="btn-add-cart">
-          <button class="btn-add-item">Add to Cart</button>
+        <div class="item-price">{{certificate.price | currency : 'USD'}}</div>
+        <div class="btn-add-cart" *ngIf="isAuthUser">
+          <button mat-raised-button (click)="addToOrder(certificate)">Add to Cart</button>
         </div>
       </div>
     </div>

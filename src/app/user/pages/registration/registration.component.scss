@@ -1,0 +1,92 @@
+$width-register-form:350px;
+
+$color-main: rgb(194, 194, 194);
+
+.wrapper-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+}
+
+.register-form {
+  display: block;
+  margin: 0 auto;
+  width: $width-register-form;
+}
+
+.window-register {
+  width: 500px;
+  height: 490px;
+  display: block;
+  margin: auto;
+  background-color: white;
+}
+
+.item-info {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: white;
+
+  .top-row,
+  .midle-row,
+  .botton-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    font-size: 16px;
+  }
+
+  .top-row {
+    font-size: 20px;
+  }
+
+  .midle-row {
+    border-bottom: 1px solid $color-main;
+    font-size: 12px;
+  }
+
+  .item-tag-name {
+    width: 120px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .item-extra-info {
+    width: 80px;
+    text-align: end;
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-cancel {
+  width: 155px;
+  margin: 10px;
+  border-color: #e9e9e9;
+  color: grey;
+  background-color: white;
+  font-size: 12pt
+}
+
+.btn-register {
+  width: 155px;
+  margin: 10px;
+  border-color: #67c78f;
+  color: white;
+  background-color: #6fcf97;
+  font-size: 12pt;
+}

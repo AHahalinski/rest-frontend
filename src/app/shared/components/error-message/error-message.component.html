@@ -1,0 +1,16 @@
+<mat-dialog-content class="mat-typography">
+  <div class="dialog-window">
+    <p class="title-message">{{title}}</p>
+    <b class="title">Error:</b>
+    <p class="message">{{error}}</p>
+    <b class="title">Message:</b>
+    <p class="message">{{message}}</p>
+    <b class="title">Status:</b>
+    <p class="message">{{status}}</p>
+    <b class="title">Time:</b>
+    <p class="message">{{time}}</p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions  align="center">
+  <button class="btn-details" mat-raised-button [mat-dialog-close]="true" > {{btnReturn}} </button>
+</mat-dialog-actions>

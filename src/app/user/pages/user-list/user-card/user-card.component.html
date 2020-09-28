@@ -1,0 +1,8 @@
+<a [routerLink]="['./', user.id]">
+  <div class="table-row">
+    <p class="login">{{user.login}}</p>
+    <p class="first-name">{{user.firstName}}</p>
+    <p class="second-name">{{user.secondName}}</p>
+    <p class="role">{{user.stringRoles?.join(', ').replace('ROLE_','')}}</p>
+  </div>
+</a>

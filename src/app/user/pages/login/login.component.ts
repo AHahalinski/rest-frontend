@@ -12,16 +12,16 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
-  // tslint:disable-next-line: no-inferrable-types
-  public submitted: boolean = false;
+  public submitted = false;
+  public isAuth = false;
 
   constructor(private userService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup(
       {
-        login: new FormControl(null),
-        password: new FormControl(null)
+        login: new FormControl(null, [Validators.required]),
+        password: new FormControl(null, [Validators.required, Validators.minLength(6)])
       }
     );
   }
@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.reset();
       this.router.navigate(['/certificates']);
       this.submitted = false;
+      this.isAuth = true;
     }, () => { this.submitted = false; });
   }
 }

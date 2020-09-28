@@ -1,0 +1,28 @@
+  .table-row {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid grey;
+    font-size: 16px;
+  }
+
+  p {
+    text-align: center;
+    padding: 15px;
+  }
+
+  .table-row:hover {
+    box-shadow: 5px 0 10px rgb(88, 90, 88);
+    background: rgb(211, 211, 211);
+  }
+
+  .order-number {
+    width: 20%;
+  }
+
+  .creation-date {
+    width: 50%;
+  }
+
+  .total-price {
+    width: 30%;
+  }

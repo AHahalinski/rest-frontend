@@ -1,0 +1,35 @@
+<div class="container-wrapper" *ngIf="tag">
+  <div class="title-form">
+    <div class="title">Tag details</div>
+  </div>
+  <div class="details">
+    <div class="info-right-box">
+      <div class="user-box">
+        <div class="item-name">
+          <h2>{{tag.name}}</h2>
+        </div>
+        <div class="duration">
+          <h3>Category:</h3>
+          {{tag.type}}
+        </div>
+        <div class="bottom-row">
+          <div class="price">
+            <h2> {{tag.price | currency: 'USD'}} </h2>
+          </div>
+        </div>
+      </div>
+      <div class="admin-box" *ngIf="auth.isAdmin()">
+        <div class="button-group">
+          <div>
+            <button class="btn-edit" mat-raised-button [routerLink]="['./edit']">Edit</button>
+          </div>
+          <div>
+            <button class="btn-delete" mat-raised-button color="warn" (click)="openDialog()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

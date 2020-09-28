@@ -1,0 +1,34 @@
+<div class="container-wrapper" *ngIf="order | async as or">
+
+  <div class="title-form">
+    <div class="title">Order details</div>
+  </div>
+  <div class="details">
+
+    <div class="info-right-box">
+      <div class="user-box">
+        <div class="item-id">
+          <h2># {{or.id}}</h2>
+        </div>
+
+        <div class="date">
+          <h3>Creation date:</h3>
+          {{or.creationDate | date: 'short'}}
+        </div>
+        <div class="certificates-list">
+          <h3>Certificates:</h3>
+          <app-certificate-row *ngFor="let certificate of getSetCertificates(or.certificates)"
+            [certificate]="certificate"
+            [amount]="mapIdAmount.get(certificate.id)">
+          </app-certificate-row>
+          <div class="bottom-row-price">
+            <div class="total-price">
+              <h2> {{or.totalPrice | currency: 'USD'}} </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-scroll-top></app-scroll-top>

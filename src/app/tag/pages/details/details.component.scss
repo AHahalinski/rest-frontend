@@ -1,0 +1,63 @@
+.details {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  margin-top: 3%;
+}
+
+.info-right-box {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.user-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  width: 375px;
+  min-width: 342px;
+  min-height: 300px;
+  height: fit-content;
+  background: white;
+
+  h3 {
+    padding-top: 20px;
+  }
+}
+
+.duration {
+  display: grid;
+  font-size: 18px;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.admin-box {
+  padding-top: 30px;
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 375px;
+  }
+}
+
+/* Button */
+
+.btn-edit,
+.btn-delete {
+  margin: 0;
+  width: 172.5px;
+}
+
+.btn-edit {
+  background-color: #6fcf97;
+  color: white;
+}
+

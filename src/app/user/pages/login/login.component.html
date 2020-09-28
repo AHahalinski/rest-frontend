@@ -1,13 +1,25 @@
 <div class="wrapper-login">
   <div class="window-login">
     <div class="circle-logo">
-      <b>Logo</b>
+      <img src="assets\xbox.png">
     </div>
     <div class="login-form">
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <input class="field-login" type="text" placeholder="Login" formControlName="login" />
-        <input class="field-password" type="password" placeholder="Password" formControlName="password"/>
-        <button class="button-login" type="submit" [disabled]="submitted">Login</button>
+        <div *ngIf="loginForm.get('login').touched && loginForm.get('login').invalid" class="validator">
+          <small *ngIf="loginForm.get('login').errors.required">Enter login!</small>
+        </div>
+        <input class="field-password" type="password" placeholder="Password" formControlName="password" />
+        <div *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid" class="validator">
+          <small *ngIf="loginForm.get('password').errors.required">
+            Enter password!
+          </small>
+          <small *ngIf="loginForm.get('password').errors.minlength">
+            Password must be {{loginForm.get('password').errors.minlength.requiredLength}} characters (
+            Now {{loginForm.get('password').errors.minlength.actualLength}}).
+          </small>
+        </div>
+        <button class="button-login" mat-raised-button type="submit" [disabled]="loginForm.invalid || submitted">Login</button>
       </form>
     </div>
   </div>

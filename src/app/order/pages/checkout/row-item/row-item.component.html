@@ -1,0 +1,24 @@
+<div class="row-certificate">
+  <div class="img-certificate"></div>
+  <div class="certificate-info">
+    <a (click)="certificateDetails()">
+      <div>
+        <p class="name">{{certificate.name}}</p>
+      </div>
+      <div class="box-description">
+        <p class="description">{{certificate.description}}</p>
+      </div>
+    </a>
+  </div>
+  <div class="amount-controll">
+    <button mat-icon-button color="primary" (click)="remove(certificate)">
+      <mat-icon>remove_circle_outline</mat-icon>
+    </button>
+    <p class="amount">{{amount}} pcs.</p>
+    <button mat-icon-button color="primary" (click)="add(certificate)">
+      <mat-icon>add_circle_outline</mat-icon>
+    </button>
+  </div>
+
+  <p class="price">{{certificate.price | currency : 'USD'}}</p>
+</div>

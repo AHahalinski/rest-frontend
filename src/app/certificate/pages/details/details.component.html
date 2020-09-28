@@ -1,76 +1,54 @@
-  <div class="container-wrapper">
-    <div class="details">
-      <div class="info-left-box">
-        <div class="img"></div>
-        <div class="description">
-          <div class="title">
-            <h2>Item Detailed Description</h2>
+<div class="container-wrapper">
+  <div class="title-form">
+    <div class="title">Certificate details</div>
+  </div>
+  <div class="details">
+    <div class="info-left-box">
+      <div class="img"></div>
+      <div class="description">
+        <div class="title">
+          <h2>Item Detailed Description</h2>
+        </div>
+        <div class="text-description">
+          <p> {{certificate?.description}} </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-right-box">
+      <div class="user-box">
+        <div class="item-name">
+          <h2>{{certificate?.name}}</h2>
+        </div>
+
+        <div class="tag-name">{{getNamesTag().join(', ')}}</div>
+
+        <div class="duration">
+          <h3>Duration:</h3>
+          {{certificate?.durationDays.toLowerCase().replace('_', ' ')}}
+        </div>
+
+        <div class="bottom-row">
+          <div class="price">
+            <h2>{{certificate?.price | currency : 'USD'}} </h2>
           </div>
-          <div class="text-description">
-            <p>Text text text text text text texttext text text text text text
-              text text text text text text
-              texText text text text text text texttext text text text text text
-              text text text text text text
-              texText text text text text text texttext text text text text text
-              text text text text text text
-              texText text text text text text texttext text text text text text
-              text text text text text text
-              texText text text text text text texttext text text text text text
-              text text text text text text
-              texText text text text text text texttext text text text text text
-              text text text text text text
-              texText text text text text text texttext text text text text text
-              text text text text text text
-              texText text text text text text texttext text text text text text
-              text text text text text text
-              text text text text text texttext text text text text text</p>
+          <div class="link">
+            <button mat-raised-button *ngIf="authService.isAuth()" (click)="addToOrder(certificate)">
+              Add to Cart <mat-icon>shopping_cart</mat-icon>
+            </button>
           </div>
         </div>
       </div>
-
-      <div class="info-right-box">
-        <div class="user-box">
-          <div class="item-name">
-            <h2>Name</h2>
+      <div class="admin-box" *ngIf="authService.isAdmin()">
+        <div class="button-group">
+          <div>
+            <button class="btn-edit" mat-raised-button [routerLink]="['./edit']">Edit</button>
           </div>
-
-          <div class="tag-name">tag name, tag name</div>
-
-          <div class="duration">
-            <h3>Duration:</h3>
-            1 month
-          </div>
-
-          <div class="bottom-row">
-            <div class="price">
-              <h2> $ 235 </h2>
-            </div>
-            <div class="link">
-              <a class="link-add-item" href="#">
-                <div class="img-title">Add to Cart</div>
-                <div class="img-icon">
-                  <span class="iconify" data-icon="mdi:cart" data-inline="false"></span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="admin-box">
-
-          <div class="button-group">
-            <div>
-              <form action="create.certificate.html">
-                <button class="btn-edit" [routerLink]="['./edit']">Edit</button>
-              </form>
-            </div>
-            <div>
-              <form action="/">
-                <button class="btn-delete" type="submit">Delete</button>
-              </form>
-            </div>
+          <div>
+            <button class="btn-delete" mat-raised-button color="warn" (click)="openDialog()">Delete</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

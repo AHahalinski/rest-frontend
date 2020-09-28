@@ -1,0 +1,14 @@
+<div class="container-wrapper" *ngIf="orders | async as ords">
+  <div class="title-form">
+    <div class="title">Orders</div>
+  </div>
+  <div class="table-order">
+    <div class="table-title-row">
+      <p class="order-number">#</p>
+      <p class="creation-date">Creation date</p>
+      <p class="total-price">Total price, $</p>
+    </div>
+    <app-certificate-order-row *ngFor="let order of ords" [order]="order"></app-certificate-order-row>
+  </div>
+</div>
+<app-scroll-top></app-scroll-top>

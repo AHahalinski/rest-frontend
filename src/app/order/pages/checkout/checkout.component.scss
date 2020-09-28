@@ -1,0 +1,140 @@
+$color-main: rgb(194, 194, 194);
+
+%position-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-checkout {
+  @extend %position-center;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  margin: auto;
+  background-color: inherit;
+}
+
+.checkout-data-window {
+  background-color: white;
+  width: 50%;
+  margin: auto;
+}
+
+.checkout-certificates {
+  display: block;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px auto;
+  padding: 15px;
+  width: 100%;
+  height: fit-content;
+}
+
+.row-certificate {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 20px;
+
+  .img-certificate {
+    width: 100px;
+    height: inherit;
+    background: #c4c4c4;
+    ;
+  }
+
+  .certificate-info {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
+
+    div {
+      height: 50%;
+      padding-bottom: 5px;
+    }
+
+    .box-description {
+      .description {
+        padding-bottom: 0;
+        font-weight: 300;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .name {
+    font-size: 18px;
+  }
+}
+
+.title-price{
+  width: 100px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.total-price {
+  width: 100px;
+  text-align: end;
+  padding-right: 5px;
+}
+
+.row-result {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid grey;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row-certificate:hover {
+  box-shadow: 5px 0 10px rgb(88, 90, 88);
+}
+
+.btn-clean{
+  width: 100px;
+}
+
+.btn-back{
+  width: 100px;
+}
+
+.btn-back-shopping{
+  width: 200px;
+  background-color: #6fcf97;
+  color: white;
+  margin-top: 30px;
+}
+
+.btn-save{
+  width: 200px;
+  background-color: #6fcf97;
+  color: white;
+}
+
+.cart-empty {
+  margin: 60px auto;
+  text-align: center;
+  p{
+    font-size: 36px;;
+  }
+}
+
+.cart-empty-icon .mat-icon {
+  font-size: 250px;
+  width: 250px;
+  height: 250px;
+  color: darkgray;
+}

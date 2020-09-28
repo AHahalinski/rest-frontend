@@ -1,3 +1,4 @@
+import { OrderService } from './order.service';
 import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,13 +11,22 @@ import { AuthenticationResponse } from './entity/AuthenticationResponse';
 })
 export class AuthService {
 
-  private uri = `http://localhost:8080/rest/auth/login`;
+  private uri = `http://localhost:8080/auth/login`;
+  // private uri = `http://localhost:8080/rest/auth/login`;
 
-  constructor(private http: HttpClient) { }
+
+  constructor(
+    private http: HttpClient,
+    private orderService: OrderService) { }
 
   public login(user: AuthenticationRequest): Observable<AuthenticationResponse> {
     return this.http.post(this.uri, user)
       .pipe(tap(this.saveUserAuth));
+  }
+
+  public logout(): void {
+    this.cleanUserAuth();
+    this.orderService.cleanCart();
   }
 
   public saveUserAuth(authResponce: AuthenticationResponse): void {
@@ -25,20 +35,28 @@ export class AuthService {
     localStorage.setItem('login', authResponce.login);
   }
 
-  public isAdmin(): boolean {
-    localStorage.get('roles').array.forEach((element: string) => {
-      if (element === 'ROLE_ADMIN') {
-        return true;
-      }
-    });
-    return false;
-  }
-
   public cleanUserAuth(): void {
     localStorage.clear();
   }
 
   public getToken(): string {
     return localStorage.getItem('token');
+  }
+
+  public getUserName(): string {
+    return localStorage.getItem('login');
+  }
+
+  public isAuth(): boolean {
+    const isAuthUser = this.getToken();
+    if (isAuthUser) {
+      return true;
+    }
+    return false;
+  }
+
+  public isAdmin(): boolean {
+    const role = localStorage.getItem('roles');
+    return (role === 'ROLE_ADMIN');
   }
 }

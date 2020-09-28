@@ -1,0 +1,62 @@
+.details {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  margin-top: 3%;
+}
+
+.info-right-box {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.user-name,
+.user-role {
+  display: grid;
+  font-size: 18px;
+
+  span {
+    font-size: 16px;
+  }
+}
+
+.user-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  width: 375px;
+  min-width: 342px;
+  min-height: 300px;
+  height: fit-content;
+  background: white;
+
+  h3 {
+      padding-top: 20px;
+  }
+}
+
+.admin-box {
+  padding-top: 30px;
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 375px;
+  }
+}
+
+.btn-lock {
+  margin: 0;
+  width: 172.5px;
+}
+
+.btn-lock {
+  background: rgb(252, 67, 67);
+  color: black;
+}
+
+.btn-lock {
+  width: 375px;
+}

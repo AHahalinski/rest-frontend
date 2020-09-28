@@ -1,0 +1,31 @@
+<div class="window-checkout">
+  <div class="title-form">
+    <div class="title">Checkout</div>
+  </div>
+  <div class="checkout-data-window" *ngIf="certificates.length > 0; else empty">
+    <div class="checkout-certificates">
+      <app-row-item *ngFor="let certificate of setCertificates$ | async" [certificate]="certificate"
+        [amount$]="orderService.mapIdAmount$">
+      </app-row-item>
+      <div class="row-result">
+        <p class="title-price">Total</p>
+        <p class="total-price">{{totalPrice.toFixed(2) | currency: 'USD'}}</p>
+      </div>
+      <div class="button-group">
+        <button class="btn-clean" mat-raised-button color="warn" (click)="cleanCart()">Clear cart</button>
+        <button class="btn-back" mat-raised-button [routerLink]="['/']">Back</button>
+        <button class="btn-save" mat-raised-button (click)="saveOrder()">Checkout</button>
+      </div>
+    </div>
+  </div>
+  <ng-template #empty>
+    <div class="cart-empty">
+      <p>Cart is empty!</p>
+      <div class="cart-empty-icon">
+        <mat-icon>remove_shopping_cart</mat-icon>
+      </div>
+      <button class="btn-back-shopping" mat-raised-button [routerLink]="['/']">Go to certificates</button>
+    </div>
+  </ng-template>
+</div>
+<app-scroll-top></app-scroll-top>

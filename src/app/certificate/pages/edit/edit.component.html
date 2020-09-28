@@ -1,0 +1,46 @@
+<div class="window-creator-certificate">
+  <div class="title-form">
+    <div class="title">Edit certificate</div>
+  </div>
+  <div class="creator-form">
+    <div *ngIf="form">
+      <form class="form-creator" [formGroup]="form" (ngSubmit)="openDialog()">
+        <div class="field-input">
+          <div class="field-input-left">
+            <div class="form-group">
+              <label>Name</label>
+              <input class="form-input" type="text" formControlName="name" />
+            </div>
+            <div class="form-group">
+              <label>Price, $</label>
+              <input class="form-input" type="number" formControlName="price" />
+            </div>
+            <div class="form-group">
+              <label>Duration month</label>
+              <select class="select" formControlName="durationDays">
+                <option value="ONE_MONTH" selected>1 month</option>
+                <option value="THREE_MONTH">3 month</option>
+                <option value="SIX_MONTH">6 month</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tag name</label>
+              <app-chip-list [tagsFromCertificate]="certificate.tags"
+                (tagsOutput)="acceptData($event)"></app-chip-list>
+            </div>
+          </div>
+          <div class="field-input-right">
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-input" type="text" formControlName="description"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="button-group">
+          <button class="btn-back" mat-raised-button [routerLink]="['../']">Back</button>
+          <button class="btn-save" mat-raised-button color="warn"> Update </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

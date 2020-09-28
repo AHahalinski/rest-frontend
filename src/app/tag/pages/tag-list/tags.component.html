@@ -1,9 +1,12 @@
 <div class="container-wrapper">
+  <div class="title-form">
+    <div class="title">Tags</div>
+  </div>
   <div class="table-tag">
     <div class="table-title-row">
       <p class="name">Name</p>
       <p class="type">Type</p>
-      <p class="price">Price, $</p>
+      <p class="price">Price</p>
     </div>
     <app-tag-card *ngFor="let tag of tags" [tag]="tag"></app-tag-card>
   </div>
@@ -11,3 +14,4 @@
     <span class="iconify" data-icon="mdi:chevron-up-box" data-inline="false"></span>
   </div>
 </div>
+<app-scroll-top></app-scroll-top>

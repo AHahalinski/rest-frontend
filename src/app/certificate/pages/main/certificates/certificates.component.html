@@ -1,8 +1,13 @@
-  <div class="container-wrapper">
-    <div class="container">
-      <app-card *ngFor="let card of cards" [certificate]="card"></app-card>
-      <div class="scrollUp">
-        <span class="iconify" data-icon="mdi:chevron-up-box" data-inline="false"></span>
-      </div>
-    </div>
+<div class="container-wrapper">
+  <div class="title-form">
+    <div class="title">Certificates</div>
   </div>
+  <div class="container" *ngIf="cards.length>0; else loading">
+    <app-card *ngFor="let card of cards" [certificate]="card" [isAuthUser]="isAuth">
+    </app-card>
+  </div>
+</div>
+<ng-template #loading>
+  <app-spinner-loading></app-spinner-loading>
+</ng-template>
+<app-scroll-top></app-scroll-top>

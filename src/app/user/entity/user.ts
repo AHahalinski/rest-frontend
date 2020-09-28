@@ -4,14 +4,14 @@ export class User {
   public password: string;
   public firstName: string;
   public secondName: string;
-  public roles: string[];
+  public stringRoles: string[];
 
-  constructor(login: string, password: string, id?: number, firstName?: string, secondName?: string, roles?: string[]) {
+  constructor(id: number, login: string, password: string, firstName: string, secondName: string, roles?: string[]) {
     this.id = id;
     this.login = login;
     this.password = password;
     this.firstName = firstName;
     this.secondName = secondName;
-    this.roles = roles;
+    this.stringRoles = roles;
   }
 }

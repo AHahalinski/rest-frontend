@@ -1,0 +1,75 @@
+$color-main: rgb(194, 194, 194);
+
+%position-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row-certificate {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 20px;
+
+  .img-certificate {
+    width: 100px;
+    height: inherit;
+    background: #c4c4c4;
+  }
+
+  .certificate-info {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
+
+    div {
+      height: 50%;
+      padding-bottom: 5px;
+    }
+
+    .box-description {
+      .description {
+        padding-bottom: 0;
+        font-weight: 300;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .name {
+    font-size: 18px;
+  }
+}
+
+.amount,
+.price {
+  text-align: left;
+  padding: 20px 0;
+}
+.price {
+  width: 100px;
+  text-align: end;
+  padding-right: 5px;
+}
+
+.row-certificate:hover {
+  box-shadow: 5px 0 10px rgb(88, 90, 88);
+}
+
+a {
+  cursor: pointer;
+}
+.amount-controll {
+  width: 150px;
+  display: inline-flex;
+  align-items: center;
+}

@@ -1,0 +1,43 @@
+<div class="wrapper-register">
+
+  <div class="window-register" id="register-open">
+
+    <div class="title-form">
+      <div class="title">Register</div>
+    </div>
+    <div class="register-form">
+      <form [formGroup]="registrationForm" (ngSubmit)="register()">
+        <div class="form-group">
+          <label>Login</label>
+          <input class="form-input" type="text" formControlName="login" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-input" type="password" formControlName="password" />
+        </div>
+        <div class="form-group">
+          <label>Repeat Password</label>
+          <input class="form-input" type="password" formControlName="repeatedPassword" />
+        </div>
+        <!-- <div *ngIf="registrationForm.get('password').touched
+        && registrationForm.get('repeatedPassword').touched
+        && registrationForm.get('repeatedPassword') !== registrationForm.get('password')" class="validator">
+          <small>Passwords aren't equals</small>
+        </div> -->
+        <div class="form-group">
+          <label>First Name</label>
+          <input class="form-input" type="text" formControlName="firstName" />
+        </div>
+        <div class="form-group">
+          <label>Second Name</label>
+          <input class="form-input" type="text" formControlName="secondName" />
+        </div>
+
+        <div class="button-group">
+          <button class="btn-cancel" mat-raised-button type="reset" href="#">Reset</button>
+          <button class="btn-register" mat-raised-button type="submit" [disabled]="registrationForm.invalid">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

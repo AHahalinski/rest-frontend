@@ -1,0 +1,7 @@
+<a [routerLink]="['/orders/' + order.id]">
+  <div class="table-row">
+    <p class="order-number">{{order.id}}</p>
+    <p class="creation-date">{{order.creationDate | date: 'medium'}}</p>
+    <p class="total-price">{{order.totalPrice | currency: 'USD'}}</p>
+  </div>
+</a>

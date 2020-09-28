@@ -1,0 +1,25 @@
+.table-user {
+  width: 60%;
+  margin: 40px auto 5px;
+  background: rgb(233, 233, 233);
+
+  .table-title-row {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid grey;
+    background: rgb(194, 194, 194);
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  p {
+    text-align: center;
+    padding: 15px;
+  }
+}
+
+.table-user p {
+  width: 25%;
+}
