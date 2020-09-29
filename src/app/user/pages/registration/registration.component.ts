@@ -1,6 +1,6 @@
 import { InfoWindowComponent } from './../../../shared/components/info-window/info-window.component';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../entity/user';
 import { UserService } from 'src/app/services/user.service';
@@ -20,22 +20,37 @@ export class RegistrationComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private builder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.registrationForm = new FormGroup(
+    // this.registrationForm = new FormGroup(
+    //   {
+    //     login: new FormControl(null, [Validators.required]),
+    //     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+    //     repeatedPassword: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+    //     firstName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')]),
+    //     secondName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')])
+    //   }
+    // );
+    this.registrationForm = this.builder.group(
       {
         login: new FormControl(null, [Validators.required]),
         password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-        repeatedPassword: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-        firstName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
-        secondName: new FormControl(null, [Validators.required, Validators.minLength(2)])
+        repeatedPassword: new FormControl(null, []),
+        firstName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')]),
+        secondName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')])
       }
+      , { validators: matchingPasswords('password', 'repeatedPassword') }
     );
   }
 
   public register(): void {
+    if (this.registrationForm.invalid) {
+      return;
+    }
+    this.submitted = true;
     const user = new User(
       null,
       this.registrationForm.value.login,
@@ -50,7 +65,6 @@ export class RegistrationComponent implements OnInit {
       }
       this.submitted = false;
     }, () => { this.submitted = false; });
-
   }
 
   private showInfoResultOperation(id: number): void {
@@ -65,4 +79,20 @@ export class RegistrationComponent implements OnInit {
       this.router.navigate(['/auth/login']);
     });
   }
+}
+
+
+
+export function matchingPasswords(passwordKey: string, confirmPasswordKey: string): ValidatorFn {
+  return (group: FormGroup): { [key: string]: any } => {
+    const password = group.controls[passwordKey];
+    console.log(password);
+    const confirmPassword = group.controls[confirmPasswordKey];
+    console.log(confirmPassword);
+    if (password.value !== confirmPassword.value) {
+      return {
+        mismatchedPasswords: true
+      };
+    }
+  };
 }

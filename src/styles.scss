@@ -154,8 +154,8 @@ $width-default:330px;
 .form-input,
 .form-group .select {
   display: block;
-  width: $width-default;
-  margin: 8px 10px 10px;
+  width: 100%;
+  margin: 0 0 15px;
 }
 
 %position-center {
@@ -213,4 +213,13 @@ $width-default:330px;
 
 %btn-green:active {
   background: #2b7a4c;
+}
+
+.validator {
+  margin-top: -10px;
+
+  small {
+    font-size: 12px;
+    color: red;
+  }
 }

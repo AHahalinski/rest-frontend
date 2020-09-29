@@ -40,9 +40,6 @@ export class TokenInterceptorService implements HttpInterceptor {
       this.authService.cleanUserAuth();
       this.router.navigate(['/auth/login']);
     }
-    if (error.status === 403) {
-      this.router.navigate(['/auth/login']);
-    }
     return throwError(error);
   }
 }

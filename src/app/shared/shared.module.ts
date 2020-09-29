@@ -25,7 +25,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     InfoWindowComponent,
     SpinnerLoadingComponent,
     ErrorMessageComponent,
-    JoinPipe
+    JoinPipe,
   ],
   imports: [
     CommonModule,
@@ -40,7 +40,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     ContentComponent,
     ScrollTopComponent,
     SpinnerLoadingComponent,
-    JoinPipe
+    JoinPipe,
   ]
 })
 export class SharedModule { }

@@ -1,7 +1,5 @@
 <div class="wrapper-register">
-
   <div class="window-register" id="register-open">
-
     <div class="title-form">
       <div class="title">Register</div>
     </div>
@@ -10,32 +8,66 @@
         <div class="form-group">
           <label>Login</label>
           <input class="form-input" type="text" formControlName="login" />
+          <div class="validator" *ngIf="registrationForm.get('login').touched && registrationForm.get('login').invalid">
+            <small *ngIf="registrationForm.get ('login').errors.required">Enter login!</small>
+          </div>
         </div>
         <div class="form-group">
           <label>Password</label>
           <input class="form-input" type="password" formControlName="password" />
+          <div *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid"
+            class="validator">
+            <small *ngIf="registrationForm.get('password').errors.required">
+              Enter password!
+            </small>
+            <small *ngIf="registrationForm.get('password').errors.minlength">
+              Password must be {{registrationForm.get('password').errors.minlength.requiredLength}} characters (
+              Now {{registrationForm.get('password').errors.minlength.actualLength}}).
+            </small>
+          </div>
         </div>
         <div class="form-group">
           <label>Repeat Password</label>
           <input class="form-input" type="password" formControlName="repeatedPassword" />
+          <div class="validator" *ngIf="registrationForm.get('repeatedPassword').touched">
+            <small *ngIf="registrationForm.get('password').touched
+            && registrationForm.get('password').valid
+            && registrationForm.get('repeatedPassword').value !== registrationForm.get('password').value">Passwords
+              don't match!</small>
+          </div>
         </div>
-        <!-- <div *ngIf="registrationForm.get('password').touched
-        && registrationForm.get('repeatedPassword').touched
-        && registrationForm.get('repeatedPassword') !== registrationForm.get('password')" class="validator">
-          <small>Passwords aren't equals</small>
-        </div> -->
         <div class="form-group">
           <label>First Name</label>
           <input class="form-input" type="text" formControlName="firstName" />
+          <div class="validator"
+            *ngIf="registrationForm.get('firstName').touched && registrationForm.get('firstName').invalid">
+            <small *ngIf="registrationForm.get('firstName').errors.required">Enter you first name!</small>
+            <small *ngIf="registrationForm.get('firstName').hasError('minlength')">
+              Second name must be {{registrationForm.get('firstName').errors.minlength.requiredLength}} characters (
+              Now {{registrationForm.get('firstName').errors.minlength.actualLength}}).
+            </small>
+            <small *ngIf="registrationForm.get('firstName').hasError('pattern')">You use forbbiden
+              characters</small>
+          </div>
         </div>
         <div class="form-group">
           <label>Second Name</label>
           <input class="form-input" type="text" formControlName="secondName" />
+          <div class="validator"
+            *ngIf="registrationForm.get('secondName').touched && registrationForm.get('secondName').invalid">
+            <small *ngIf="registrationForm.get('secondName').errors.required">Enter you second name!</small>
+            <small *ngIf="registrationForm.get('secondName').hasError('minlength')">
+              Second name must be {{registrationForm.get('secondName').errors.minlength.requiredLength}} characters (
+              Now {{registrationForm.get('secondName').errors.minlength.actualLength}}).
+            </small>
+            <small *ngIf="registrationForm.get('secondName').hasError('pattern')">You use forbbiden
+              characters</small>
+          </div>
         </div>
-
         <div class="button-group">
           <button class="btn-cancel" mat-raised-button type="reset" href="#">Reset</button>
-          <button class="btn-register" mat-raised-button type="submit" [disabled]="registrationForm.invalid">Register</button>
+          <button class="btn-register" mat-raised-button type="submit"
+            [disabled]="registrationForm.invalid">Register</button>
         </div>
       </form>
     </div>
