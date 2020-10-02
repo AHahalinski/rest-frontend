@@ -8,8 +8,8 @@ import { Tag } from '../shared/entity/Tag';
 })
 export class TagService {
 
-  readonly BASE_URL = `http://localhost:8080/tags`;
-  // private uri = `http://localhost:8080/rest/tags?page=1&size=30`;
+  // readonly BASE_URL = `http://localhost:8080/tags`;
+  readonly BASE_URL = `http://localhost:8080/rest/tags`;
 
 
   constructor(private http: HttpClient) { }

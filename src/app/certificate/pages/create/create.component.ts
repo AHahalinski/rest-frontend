@@ -15,6 +15,10 @@ import { InfoWindowComponent } from 'src/app/shared/components/info-window/info-
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
+
+  readonly REG_EXP_LITTERS = new RegExp('^[a-zA-Z]+$');
+  readonly REG_EXP_NUMBERS = new RegExp('^[0-9]+(.[0-9]+)?$');
+
   public submitted = false;
   public form: FormGroup;
   public returnedTags: Tag[];
@@ -28,11 +32,20 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      price: new FormControl(null, Validators.required),
-      durationDays: new FormControl(null, Validators.required),
+      name: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.pattern(this.REG_EXP_LITTERS
+        )]),
+      price: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(this.REG_EXP_NUMBERS)
+      ]),
+      durationDays: new FormControl(null,
+        Validators.required
+      ),
       tags: new FormControl(null),
-      description: new FormControl(null, Validators.required)
+      description: new FormControl(null)
     });
   }
 
@@ -41,25 +54,23 @@ export class CreateComponent implements OnInit {
   }
 
   public create(): void {
-    // if (this.form.invalid) {
+    if (this.form.invalid) {
+      this.submitted = true;
+    }
     const certificate = new Certificate();
     certificate.name = this.form.value.name;
     certificate.description = this.form.value.description;
     certificate.price = this.form.value.price;
     certificate.durationDays = this.form.value.durationDays;
     certificate.tags = this.returnedTags;
-    this.certificateService.create(certificate)
-      .subscribe(response => {
-        console.log(response);
-        const createdCertificate: Certificate = response.body;
-        if (response.status === 201) {
-          console.log('Certificates was updated');
-          this.form.reset();
-          this.showInfoResultOperation(createdCertificate.id);
-        }
-      });
-    // }
-    this.submitted = true;
+    this.certificateService.create(certificate).subscribe(response => {
+      const createdCertificate: Certificate = response.body;
+      if (response.status === 201) {
+        this.form.reset();
+        this.showInfoResultOperation(createdCertificate.id);
+      }
+      this.submitted = false;
+    }, () => { this.submitted = false; });
   }
 
   public openDialog(): void {

@@ -1,3 +1,4 @@
+import { OrderService } from './../../../services/order.service';
 import { DialogWindowComponent } from 'src/app/shared/components/dialog-window/dialog-window.component';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -16,6 +17,9 @@ import { InfoWindowComponent } from 'src/app/shared/components/info-window/info-
 })
 export class EditComponent implements OnInit {
 
+  readonly REG_EXP_LITTERS = new RegExp('^[a-zA-Z]+$');
+  readonly REG_EXP_NUMBERS = new RegExp('^[0-9]+(.[0-9]+)?$');
+
   public form: FormGroup;
   public certificate: Certificate;
   public submitted = false;
@@ -25,6 +29,7 @@ export class EditComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private certificateService: CertificateService,
+    private orderService: OrderService,
     private router: ActivatedRoute,
     private routerUrl: Router) {
   }
@@ -38,11 +43,18 @@ export class EditComponent implements OnInit {
     ).subscribe(data => {
       this.certificate = data;
       this.form = new FormGroup({
-        name: new FormControl(this.certificate.name, Validators.required),
-        price: new FormControl(this.certificate.price, Validators.required),
+        name: new FormControl(this.certificate.name, [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern(this.REG_EXP_LITTERS)
+        ]),
+        price: new FormControl(this.certificate.price, [
+          Validators.required,
+          Validators.pattern(this.REG_EXP_NUMBERS)
+        ]),
         durationDays: new FormControl(this.certificate.durationDays, Validators.required),
         tags: new FormControl(this.certificate.tags),
-        description: new FormControl(this.certificate.description, Validators.required),
+        description: new FormControl(this.certificate.description),
       });
     });
   }
@@ -52,25 +64,26 @@ export class EditComponent implements OnInit {
   }
 
   public update(): void {
-    // if (this.form.invalid) {
-    const certificate$ = new Certificate();
-    certificate$.name = this.form.value.name;
-    certificate$.description = this.form.value.description;
-    certificate$.price = this.form.value.price;
-    certificate$.durationDays = this.form.value.durationDays;
-    certificate$.tags = this.returnedTags;
+    if (this.form.invalid) {
+      this.submitted = true;
+    }
+    const certificate = new Certificate();
+    certificate.id = this.id;
+    certificate.name = this.form.value.name;
+    certificate.description = this.form.value.description;
+    certificate.price = this.form.value.price;
+    certificate.durationDays = this.form.value.durationDays;
+    certificate.tags = this.returnedTags;
     console.log(this.returnedTags);
-    this.certificateService.update(this.id, certificate$)
-      .subscribe(response => {
-        console.log(response);
-        if (response.status === 200) {
-          console.log('Certificate was updated');
-          this.form.reset();
-          this.showInfoResultOperation(this.id);
-        }
-      });
-    // }
-    this.submitted = true;
+    this.certificateService.update(this.id, certificate).subscribe(response => {
+      console.log(response);
+      if (response.status === 200) {
+        this.form.reset();
+        this.showInfoResultOperation(this.id);
+        this.orderService.refreshOrder(certificate);
+      }
+      this.submitted = false;
+    }, () => { this.submitted = false; });
   }
 
   public openDialog(): void {

@@ -7,8 +7,9 @@
       <div class="top-row">
         <div class="item-name"> {{certificate.name}} </div>
         <div class="wish-list">
-          <button mat-icon-button aria-label="Example icon button with a heart icon">
-            <mat-icon>favorite</mat-icon>
+          <button mat-icon-button (click)="changeIcon(hasFavorite)">
+            <mat-icon *ngIf="hasFavorite">favorite</mat-icon>
+            <mat-icon *ngIf="!hasFavorite">favorite_border</mat-icon>
           </button>
         </div>
       </div>

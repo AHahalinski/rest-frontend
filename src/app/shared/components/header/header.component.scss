@@ -7,6 +7,11 @@ header {
   top: 0;
   background: white;
   z-index: 999;
+  // box-shadow: 5px 10px 10px rgb(88, 90, 88);
+  box-shadow:
+    inset rgba(73, 72, 72, 0.6) 0 -3px 8px,
+    inset rgba(252, 255, 255, .7) 0 3px 8px,
+    rgba(100, 98, 98, 0.8) 0 3px 8px -3px;
 }
 
 .bar-left {

@@ -75,43 +75,4 @@ $color-main: rgb(194, 194, 194);
     width: 80px;
     text-align: end;
   }
-
-  %button-base {
-    width: 155px;
-    display: inline-block;
-    padding: 6px 35px;
-    margin: 10px;
-    text-decoration: none;
-    font-size: 12pt;
-    font-family: inherit;
-    cursor: pointer;
-    outline: none;
-    border: 1px solid;
-  }
-
-  %btn-grey {
-    @extend %button-base;
-    border-color: #e9e9e9;
-    color: grey;
-    background-color: white;
-  }
-
-  %btn-grey:hover {
-    background: #e6e6ff;
-  }
-
-  %btn-grey:active {
-    background: #a1a1aa;
-    color: rgb(54, 52, 52);
-  }
-
-  .btn-add-item {
-    @extend %btn-grey;
-    vertical-align: middle;
-    font-size: 14px;
-    margin: 0;
-    width: 100px;
-    height: 30px;
-    padding: 5px;
-  }
 }

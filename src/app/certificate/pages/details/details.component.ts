@@ -1,6 +1,6 @@
-import { InfoWindowComponent } from './../../../shared/components/info-window/info-window.component';
-import { DialogWindowComponent } from './../../../shared/components/dialog-window/dialog-window.component';
-import { OrderService } from './../../../services/order.service';
+import { InfoWindowComponent } from '../../../shared/components/info-window/info-window.component';
+import { DialogWindowComponent } from '../../../shared/components/dialog-window/dialog-window.component';
+import { OrderService } from '../../../services/order.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CertificateService } from 'src/app/services/certificate.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -33,7 +33,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.id = paramsId.id;
     });
     this.cSub = this.certificateService.getCertificateById(this.id)
-      .subscribe(data => this.certificate = data);
+      .subscribe((data: Certificate) => this.certificate = data);
   }
 
   ngOnDestroy(): void {
@@ -50,7 +50,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
     const tagsName: string[] = [];
     this.certificate?.tags
       .forEach(t => {
-        console.log(`tag: ${t.name}`);
         tagsName.push(t.name);
       });
     return tagsName;
@@ -87,7 +86,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
       text: `The certificate with id = ${id} was delete.`,
       btnReturnAll: `Go to all`
     };
-
     const dialogRef = this.dialog.open(InfoWindowComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       this.routerNav.navigate(['/']);

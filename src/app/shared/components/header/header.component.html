@@ -46,7 +46,7 @@
 
   <div class="search-block" *ngIf="containsSearchig()">
     <input formControlName="searchByName" class="field-search" id="#searchByName" type="search"
-      placeholder="Search by item name" value="">
+      placeholder="Search by item name">
     <select class="select" placeholder="Select tag" *ngIf="auth.isAuth()">
       <option value="">Select tag</option>
       <option *ngFor="let tag of tags" [value]="tag.name"> {{tag.name}} </option>
@@ -54,13 +54,13 @@
   </div>
 
   <div class=" bar-right" *ngIf="auth.isAuth(); else notAuth">
-    <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
+    <button mat-icon-button (click)="changeIcon(hasFavorite)">
+      <mat-icon *ngIf="hasFavorite">favorite</mat-icon>
+      <mat-icon *ngIf="!hasFavorite">favorite_border</mat-icon>
     </button>
     <button mat-icon-button [routerLink]="['orders/checkout']">
       <mat-icon matBadge={{amountItemFromCart}} matBadgeColor="primary">shopping_cart</mat-icon>
       <span class="cdk-visually-hidden">
-        Example with a home icon with overlaid badge showing the number 15
       </span>
     </button>
     <div class="login">

@@ -1,3 +1,5 @@
+import { AdminGuard } from './guard/admin.guard';
+import { AuthGuard } from './guard/auth.guard';
 import { JoinPipe } from './pipe/join-pipe';
 import { MaterialModule } from './../material.module';
 import { NavTopLineComponent } from './components/nav-top-line/nav-top-line.component';
@@ -13,6 +15,7 @@ import { DialogWindowComponent } from './components/dialog-window/dialog-window.
 import { InfoWindowComponent } from './components/info-window/info-window.component';
 import { SpinnerLoadingComponent } from './components/spinner-loading/spinner-loading.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { ErrorPageComponent } from './page/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     SpinnerLoadingComponent,
     ErrorMessageComponent,
     JoinPipe,
+    ErrorPageComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +45,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     ScrollTopComponent,
     SpinnerLoadingComponent,
     JoinPipe,
+    ErrorPageComponent
   ]
 })
 export class SharedModule { }

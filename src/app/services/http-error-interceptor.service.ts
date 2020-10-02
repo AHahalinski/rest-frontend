@@ -36,7 +36,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           if (error.status === 403
             || error.status === 400
             || error.status === 409
-            || error.status === 404) {
+            || error.status === 404
+            || error.status === 500) {
             this.showErrorMessage(error);
           }
           return throwError(errorMsg);

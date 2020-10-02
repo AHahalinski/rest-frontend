@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  // private BASE_URL_AUTH = `http://localhost:8080/rest/auth/signup`;
-  // private BASE_URL_USERS = `http://localhost:8080/rest/users`;
+  readonly BASE_URL_AUTH = `http://localhost:8080/rest/auth/signup`;
+  readonly BASE_URL_USERS = `http://localhost:8080/rest/users`;
 
-  private BASE_URL_AUTH = `http://localhost:8080/auth/signup`;
-  private BASE_URL_USERS = `http://localhost:8080/users`;
+  // readonly BASE_URL_AUTH = `http://localhost:8080/auth/signup`;
+  // readonly BASE_URL_USERS = `http://localhost:8080/users`;
 
   constructor(private http: HttpClient) { }
 

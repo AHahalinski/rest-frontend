@@ -1,3 +1,0 @@
-interface ResponseList{
-  listDto: any;
-}

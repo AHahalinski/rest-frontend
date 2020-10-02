@@ -11,8 +11,8 @@ import { AuthenticationResponse } from './entity/AuthenticationResponse';
 })
 export class AuthService {
 
-  private uri = `http://localhost:8080/auth/login`;
-  // private uri = `http://localhost:8080/rest/auth/login`;
+  // readonly uri = `http://localhost:8080/auth/login`;
+  readonly URL = `http://localhost:8080/rest/auth/login`;
 
 
   constructor(
@@ -20,7 +20,7 @@ export class AuthService {
     private orderService: OrderService) { }
 
   public login(user: AuthenticationRequest): Observable<AuthenticationResponse> {
-    return this.http.post(this.uri, user)
+    return this.http.post(this.URL, user)
       .pipe(tap(this.saveUserAuth));
   }
 

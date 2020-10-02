@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs';
 import { TagService } from './../../../services/tag.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Tag } from 'src/app/shared/entity/Tag';
 
 @Component({
@@ -8,7 +8,7 @@ import { Tag } from 'src/app/shared/entity/Tag';
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.scss']
 })
-export class TagsComponent implements OnInit {
+export class TagsComponent implements OnInit, OnDestroy {
 
   private tSbc: Subscription;
   public tags: Tag;
@@ -20,7 +20,6 @@ export class TagsComponent implements OnInit {
       .subscribe(data => this.tags = data.listDto.content);
   }
 
-  // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy(): void {
     if (this.tSbc) {
       this.tSbc.unsubscribe();

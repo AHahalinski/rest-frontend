@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class CertificateService {
 
 
-  readonly URL_BASE = `http://localhost:8080/certificates`;
-  // readonly URL_BASE = `http://localhost:8080/rest/certificates`;
+  // readonly URL_BASE = `http://localhost:8080/certificates`;
+  readonly URL_BASE = `http://localhost:8080/rest/certificates`;
 
 
   constructor(private http: HttpClient) { }

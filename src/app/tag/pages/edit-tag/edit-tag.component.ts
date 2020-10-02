@@ -14,6 +14,10 @@ import { InfoWindowComponent } from 'src/app/shared/components/info-window/info-
   styleUrls: ['./edit-tag.component.scss']
 })
 export class EditTagComponent implements OnInit {
+
+  readonly REG_EXP_LITTERS = new RegExp('^[a-zA-Z]+$');
+  readonly REG_EXP_NUMBERS = new RegExp('^[0-9]+(.[0-9]+)?$');
+
   public submitted = false;
   public form: FormGroup;
   public tag: Tag;
@@ -35,31 +39,34 @@ export class EditTagComponent implements OnInit {
     ).subscribe(data => {
       this.tag = data;
       this.form = new FormGroup({
-        name: new FormControl(this.tag.name, Validators.required),
+        name: new FormControl(this.tag.name, [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.pattern(this.REG_EXP_LITTERS)]),
         type: new FormControl(this.tag.type, Validators.required),
-        price: new FormControl(this.tag.price, Validators.required),
+        price: new FormControl(this.tag.price, [
+          Validators.required,
+          Validators.pattern(this.REG_EXP_NUMBERS)
+        ]),
       });
     });
   }
 
   public update(): void {
-    // if (this.form.invalid) {
+    if (this.form.invalid) {
+      this.submitted = true;
+    }
     const tag = new Tag();
     tag.name = this.form.value.name;
     tag.type = this.form.value.type;
     tag.price = this.form.value.price;
-    console.log(tag);
-    this.tagSevice.update(this.id, tag)
-      .subscribe(response => {
-        console.log(response);
-        const updatedTag: Tag = response.body;
-        if (response.status === 200) {
-          console.log('Tag was updated');
-          this.showInfoResultOperation(updatedTag.id);
-        }
-      });
-    // }
-    this.submitted = true;
+    this.tagSevice.update(this.id, tag).subscribe(response => {
+      const updatedTag: Tag = response.body;
+      if (response.status === 200) {
+        this.showInfoResultOperation(tag.id);
+      }
+      this.submitted = false;
+    }, () => { this.submitted = false; });
   }
 
   public openDialog(): void {

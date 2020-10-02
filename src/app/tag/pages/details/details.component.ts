@@ -72,7 +72,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
       text: `The tag with id = ${id} was delete.`,
       btnReturnAll: `Go to all`
     };
-
     const dialogRef = this.dialog.open(InfoWindowComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       this.routerNav.navigate(['/tags']);

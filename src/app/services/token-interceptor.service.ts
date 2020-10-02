@@ -13,7 +13,10 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   private authService: AuthService;
 
-  constructor(private injector: Injector, private router: Router) {
+  constructor(
+    private injector: Injector,
+    private router: Router
+    ) {
     this.authService = this.injector.get(AuthService);
   }
 

@@ -30,7 +30,10 @@ export class CheckoutComponent implements OnInit {
       });
       return data;
     }));
-    this.orderService.totalPrice$.subscribe(data => this.totalPrice = data);
+    this.orderService.totalPrice$.subscribe(data => {
+      console.log(data);
+      this.totalPrice = data;
+    });
   }
 
   public saveOrder(): void {

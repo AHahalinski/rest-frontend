@@ -19,7 +19,7 @@
           <h3>Certificates:</h3>
           <app-certificate-row *ngFor="let certificate of getSetCertificates(or.certificates)"
             [certificate]="certificate"
-            [amount]="mapIdAmount.get(certificate.id)">
+            [amount]="mapIdAmount?.get(certificate.id)">
           </app-certificate-row>
           <div class="bottom-row-price">
             <div class="total-price">

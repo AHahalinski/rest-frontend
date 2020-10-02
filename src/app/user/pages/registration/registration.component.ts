@@ -13,6 +13,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class RegistrationComponent implements OnInit {
 
+  readonly REG_EXP = new RegExp('^[a-zA-Z]+$');
   public registrationForm: FormGroup;
   public submitted = false;
   public isAuth = false;
@@ -25,24 +26,14 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.registrationForm = new FormGroup(
-    //   {
-    //     login: new FormControl(null, [Validators.required]),
-    //     password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-    //     repeatedPassword: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-    //     firstName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')]),
-    //     secondName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')])
-    //   }
-    // );
     this.registrationForm = this.builder.group(
       {
         login: new FormControl(null, [Validators.required]),
         password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
         repeatedPassword: new FormControl(null, []),
-        firstName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')]),
-        secondName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern('^[a-zA-Z]+$')])
-      }
-      , { validators: matchingPasswords('password', 'repeatedPassword') }
+        firstName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern(this.REG_EXP)]),
+        secondName: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern(this.REG_EXP)])
+      }, { validators: matchingPasswords('password', 'repeatedPassword') }
     );
   }
 
@@ -58,9 +49,8 @@ export class RegistrationComponent implements OnInit {
       this.registrationForm.value.firstName,
       this.registrationForm.value.secondName);
     this.userService.register(user).subscribe(response => {
-      this.registrationForm.reset();
       if (response.status === 201) {
-        console.log('You was regestered');
+        this.registrationForm.reset();
         this.showInfoResultOperation(null);
       }
       this.submitted = false;
@@ -86,9 +76,7 @@ export class RegistrationComponent implements OnInit {
 export function matchingPasswords(passwordKey: string, confirmPasswordKey: string): ValidatorFn {
   return (group: FormGroup): { [key: string]: any } => {
     const password = group.controls[passwordKey];
-    console.log(password);
     const confirmPassword = group.controls[confirmPasswordKey];
-    console.log(confirmPassword);
     if (password.value !== confirmPassword.value) {
       return {
         mismatchedPasswords: true

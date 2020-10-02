@@ -11,9 +11,9 @@ import { map } from 'rxjs/internal/operators/map';
 export class OrderService {
 
 
-  readonly URL_BASE = `http://localhost:8080/users/orders`;
+  // readonly URL_BASE = `http://localhost:8080/users/orders`;
   readonly SIZE = '?size=100';
-  // readonly URL_BASE = `http://localhost:8080/rest/users/orders`;
+  readonly URL_BASE = `http://localhost:8080/rest/users/orders`;
 
   private certificates: Certificate[] = JSON.parse(sessionStorage.getItem('cart')) || [];
   count$ = new BehaviorSubject<number>(this.certificates.length);
@@ -60,7 +60,7 @@ export class OrderService {
   public getTotalPrice(certificates: Certificate[]): number {
     let totalPrice = 0;
     certificates.forEach(
-      c => totalPrice = totalPrice + c.price);
+      c => totalPrice = totalPrice + +c.price);
     return totalPrice;
   }
 
@@ -87,6 +87,21 @@ export class OrderService {
     } else {
       this.synchronizeData();
     }
+  }
+
+  public refreshOrder(certificate: Certificate): void {
+    console.log(certificate);
+    console.log(this.certificates);
+    const tempArray = this.certificates.map(c => {
+      let returnValue = { ...c };
+      if (Number(c.id) === Number(certificate.id)) {
+        returnValue = {...certificate};
+      }
+      return returnValue;
+    });
+    this.certificates = tempArray;
+    sessionStorage.setItem('cart', JSON.stringify(this.certificates));
+    this.synchronizeData();
   }
 
   public cleanCart(): void {

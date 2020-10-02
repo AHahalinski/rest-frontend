@@ -2,7 +2,7 @@
   <div class="title-form">
     <div class="title">Tags</div>
   </div>
-  <div class="table-tag">
+  <div class="table-tag" *ngIf="tags; else loading">
     <div class="table-title-row">
       <p class="name">Name</p>
       <p class="type">Type</p>
@@ -10,6 +10,9 @@
     </div>
     <app-tag-card *ngFor="let tag of tags" [tag]="tag"></app-tag-card>
   </div>
+  <ng-template #loading>
+    <app-spinner-loading></app-spinner-loading>
+  </ng-template>
   <div class="scrollUp">
     <span class="iconify" data-icon="mdi:chevron-up-box" data-inline="false"></span>
   </div>
